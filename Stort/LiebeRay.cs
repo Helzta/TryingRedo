@@ -8,43 +8,42 @@ namespace Stort
 {
     public class LiebeRay
     {
-        static List<LiebeRay> rayStuff = new List<LiebeRay>();
-        public int x;
-        public int y;
-        public int w;
-        public int h;
-        public string tag;
-        public bool header;
+        // static List<LiebeRay> rayStuff = new List<LiebeRay>();
+        public int x {get; set;}
+        public int y {get; set;}
+        public int w {get; set;}
+        public int h {get; set;}
+        public string tag {get; set;}
+        public bool header = false;
         public LiebeRay toUp {get; set;}
         public LiebeRay toDown {get; set;}
         public LiebeRay toRight {get; set;}
         public LiebeRay toLeft {get; set;}
         public List<LiebeRay> visable;
         public List<LiebeRay> whatTab;
-
         public Action action;
 
-        public LiebeRay(int x, int y, int w, int h, string tag, bool header = false)
-        {
-            rayStuff.Add(this);
-            this.x = x;
-            this.y = y;
-            this.w = w;
-            this.h = h;
-            this.tag = tag;
-            this.header = header;
-        }
+        // public LiebeRay(int x, int y, int w, int h, string tag, bool header = false)
+        // {
+        //     rayStuff.Add(this);
+        //     this.x = x;
+        //     this.y = y;
+        //     this.w = w;
+        //     this.h = h;
+        //     this.tag = tag;
+        //     this.header = header;
+        // }
         public void DrawBox()
         {
             if(header == true)
             {
-                Raylib.DrawRectangle(x, y, w, h, Color.MAGENTA);
+                Raylib.DrawRectangleGradientEx(new Rectangle(x, y, w, h), Color.DARKPURPLE, Color.VIOLET, Color.DARKPURPLE , Color.VIOLET);
                 Raylib.DrawRectangleLines(x, y, w, h, Color.BLACK);
                 Raylib.DrawText(tag, x + 10, y + 10, 30, Color.YELLOW);
             }
             else
             {
-                Raylib.DrawRectangle(x, y, w, h, Color.DARKBLUE);
+                Raylib.DrawRectangleGradientEx(new Rectangle(x, y, w, h), Color.DARKBLUE, Color.BLUE, Color.DARKBLUE , Color.BLUE);
                 Raylib.DrawRectangleLines(x, y, w, h, Color.BLACK);
                 Raylib.DrawText(tag, x + 15, y + 15, 30, Color.ORANGE);
             }
@@ -66,7 +65,7 @@ namespace Stort
         }
         public void DrawTab()
         {
-            Raylib.DrawRectangle(x, y, w, h, Color.DARKPURPLE);
+            Raylib.DrawRectangleGradientEx(new Rectangle(x, y, w, h), Color.PINK, Color.MAGENTA, Color.DARKPURPLE , Color.MAGENTA);
             Raylib.DrawRectangleLines(x, y, w, h, Color.BLACK);
             Raylib.DrawText(tag, x + 10, y + 10, 30, Color.YELLOW);
         }
@@ -75,7 +74,7 @@ namespace Stort
             if(current.header == true)
             {
                 // Raylib.DrawRectangle(current.x, current.y, current.w, current.h, Color.DARKPURPLE);
-                Raylib.DrawRectangleGradientEx(new Rectangle(current.x, current.y, current.w, current.h), Color.MAGENTA, Color.VIOLET, Color.DARKPURPLE , Color.VIOLET);
+                Raylib.DrawRectangleGradientEx(new Rectangle(current.x, current.y, current.w, current.h), Color.PINK, Color.MAGENTA, Color.DARKPURPLE , Color.MAGENTA);
                 Raylib.DrawRectangleLines(current.x, current.y, current.w, current.h, Color.BLACK);
                 Raylib.DrawText(current.tag, current.x + 10, current.y + 10, 30, Color.YELLOW);
                 Raylib.DrawLineEx(new Vector2(current.x + 10, current.y + current.h - 10), new Vector2(current.x + current.w - 5, current.y + current.h - 10), 5, Color.YELLOW);
