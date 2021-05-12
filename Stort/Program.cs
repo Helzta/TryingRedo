@@ -6,13 +6,16 @@ namespace Stort
 {
     class Program
     {
+        static public Random rnd = new Random();
         static void Main(string[] args)
         {
-            LiebeRay centralTab = new LiebeRay();
-            LiebeRay squadTab = new LiebeRay();
-            LiebeRay transferTab = new LiebeRay();
-            LiebeRay officeTab = new LiebeRay();
-            LiebeRay myClubTab = new LiebeRay();
+            League.CreateLeagues();
+            
+            TabButton centralTab = new TabButton();
+            TabButton squadTab = new TabButton();
+            TabButton transferTab = new TabButton();
+            TabButton officeTab = new TabButton();
+            TabButton myClubTab = new TabButton();
             SimulateButton simulate = new SimulateButton();
             LiebeRay news = new LiebeRay();
             LiebeRay cHubs = new LiebeRay();
@@ -40,7 +43,7 @@ namespace Stort
             LiebeRay trophies = new LiebeRay();
             LiebeRay otherLeagues = new LiebeRay();
             LiebeRay top25 = new LiebeRay();
-            Shower.PrintHubMenu(centralTab, squadTab, transferTab, officeTab, myClubTab, simulate, news, cHubs, league, cTraining, cInbox, lineUp, squadHub, youthSquad, teamSheet, training, searchPlayer, transferHub, transferHistory, finances, recommended, scouts, inbox, vision, contracts, manageStaff, browseJobs, kits, arrangeFriendlies, trophies, otherLeagues, top25);
+            LiebeRay.PrintHubMenu(centralTab, squadTab, transferTab, officeTab, myClubTab, simulate, news, cHubs, league, cTraining, cInbox, lineUp, squadHub, youthSquad, teamSheet, training, searchPlayer, transferHub, transferHistory, finances, recommended, scouts, inbox, vision, contracts, manageStaff, browseJobs, kits, arrangeFriendlies, trophies, otherLeagues, top25);
             LiebeRay current = simulate;
             Raylib.InitWindow(1200,750, "");
             Raylib.SetTargetFPS(60);
@@ -49,6 +52,7 @@ namespace Stort
                 DateTime dtStart = new DateTime(2020, 6, 1);
                 DateTime dtCurrent = dtStart.AddDays(simulate.nextDay);
                 string dtString = dtCurrent.ToString("dd MMMM yyyy");
+                // string dtString = dtStart.ToString("dd MMMM yyyy");
                 // (current, simulate, news, cHubs, league, cTraining, cInbox, lineUp, squadHub, youthSquad, training, teamSheet, serachPlayer, transferHub, transferHistory, finances, scouts, recommended, vision, inbox, contracts, manageStaff, browseJobs, kits, arrangeFriendlies, trophies, otherLeagues, top25);
                 // (LiebeRay current, LiebeRay simulate, LiebeRay news, LiebeRay cHubs, LiebeRay league, LiebeRay cTraining, LiebeRay cInbox, LiebeRay lineUp, LiebeRay squadHub, LiebeRay youthSquad, LiebeRay training, LiebeRay teamSheet, LiebeRay serachPlayer, LiebeRay transferHub, LiebeRay transferHistory, LiebeRay finances, LiebeRay scouts, LiebeRay recommended, LiebeRay vision, LiebeRay inbox, LiebeRay contracts, LiebeRay manageStaff, LiebeRay browseJobs, LiebeRay kits, LiebeRay arrangeFriendlies, LiebeRay trophies, LiebeRay otherLeagues, LiebeRay top25)
                 if (Raylib.IsKeyPressed(KeyboardKey.KEY_W))
@@ -91,11 +95,11 @@ namespace Stort
 
                 if (current == simulate)
                 {
-                    Raylib.DrawText(dtString, simulate.x, simulate.y + 50, 30, Color.ORANGE);
+                    Raylib.DrawText(dtString, (int)simulate.x, (int)simulate.y + 50, 30, Color.ORANGE);
                 }
                 else if(current.visable.Contains(simulate))
                 {
-                    Raylib.DrawText(dtString, simulate.x + 15, simulate.y + 45, 20, Color.ORANGE);
+                    Raylib.DrawText(dtString, (int)simulate.x + 15, (int)simulate.y + 45, 20, Color.ORANGE);
                 }
                 Raylib.BeginDrawing();
                 Raylib.ClearBackground(Color.BLUE);
