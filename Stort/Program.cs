@@ -83,6 +83,8 @@ namespace Stort
                 {
                     current.action();
                 }
+                Raylib.BeginDrawing();
+                Raylib.ClearBackground(Color.BLUE);
                 foreach (LiebeRay LB in current.visable)
                 {
                     LB.DrawBox();
@@ -95,14 +97,12 @@ namespace Stort
 
                 if (current == simulate)
                 {
-                    Raylib.DrawText(dtString, (int)simulate.x, (int)simulate.y + 50, 30, Color.ORANGE);
+                    Raylib.DrawText(dtString, simulate.x, simulate.y + 50, 30, Color.ORANGE);
                 }
                 else if(current.visable.Contains(simulate))
                 {
-                    Raylib.DrawText(dtString, (int)simulate.x + 15, (int)simulate.y + 45, 20, Color.ORANGE);
+                    Raylib.DrawText(dtString, simulate.x + 15, simulate.y + 45, 20, Color.ORANGE);
                 }
-                Raylib.BeginDrawing();
-                Raylib.ClearBackground(Color.BLUE);
                 Raylib.EndDrawing();
             }
         }

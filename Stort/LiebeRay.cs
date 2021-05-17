@@ -9,10 +9,11 @@ namespace Stort
     public class LiebeRay
     {
         static public List<LiebeRay> rayStuff = new List<LiebeRay>();
-        public float x {get; set;}
-        public float y {get; set;}
-        public float w {get; set;}
-        public float h {get; set;}
+        public int tryX {get; set;}
+        public int x {get; set;}
+        public int y {get; set;}
+        public int w {get; set;}
+        public int h {get; set;}
         public string tag {get; set;}
         public bool header = false;
         public LiebeRay toUp {get; set;}
@@ -23,7 +24,7 @@ namespace Stort
         public List<LiebeRay> whatTab;
         public Action action;
 
-        // public LiebeRay(float x, float y, float w, float h, string tag, bool header = false)
+        // public LiebeRay(int x, int y, int w, int h, string tag, bool header = false)
         // {
         //     rayStuff.Add(this);
         //     this.x = x;
@@ -38,17 +39,15 @@ namespace Stort
             if(header == true)
             {
                 Raylib.DrawRectangleGradientEx(new Rectangle(x, y, w, h), Color.DARKPURPLE, Color.VIOLET, Color.DARKPURPLE , Color.VIOLET);
-                Raylib.DrawRectangleLines((int)x, (int)y, (int)w, (int)h, Color.BLACK);
-                Raylib.DrawText(tag, (int)x + 10, (int)y + 10, 30, Color.YELLOW);
+                Raylib.DrawRectangleLines(x, y, w, h, Color.BLACK);
+                Raylib.DrawText(tag, x + 10, y + 10, 30, Color.YELLOW);
             }
             else
             {
                 Raylib.DrawRectangleGradientEx(new Rectangle(x, y, w, h), Color.DARKBLUE, Color.BLUE, Color.DARKBLUE , Color.BLUE);
-                Raylib.DrawRectangleLines((int)x, (int)y, (int)w, (int)h, Color.BLACK);
-                Raylib.DrawText(tag, (int)x + 15, (int)y + 15, 30, Color.ORANGE);
+                Raylib.DrawRectangleLines(x, y, w, h, Color.BLACK);
+                Raylib.DrawText(tag, x + 15, y + 15, 30, Color.ORANGE);
             }
-            
-            
             {
                 // smoll
                 // Raylib.DrawRectangle(x, y, w, h, Color.SKYBLUE);
@@ -66,8 +65,8 @@ namespace Stort
         public void DrawTab()
         {
             Raylib.DrawRectangleGradientEx(new Rectangle(x, y, w, h), Color.PINK, Color.MAGENTA, Color.DARKPURPLE , Color.MAGENTA);
-            Raylib.DrawRectangleLines((int)x, (int)y, (int)w, (int)h, Color.BLACK);
-            Raylib.DrawText(tag, (int)x + 10, (int)y + 10, 30, Color.YELLOW);
+            Raylib.DrawRectangleLines(x, y, w, h, Color.BLACK);
+            Raylib.DrawText(tag, x + 10, y + 10, 30, Color.YELLOW);
         }
         static public void currentBox(LiebeRay current)
         {
@@ -75,16 +74,16 @@ namespace Stort
             {
                 // Raylib.DrawRectangle(current.x, current.y, current.w, current.h, Color.DARKPURPLE);
                 Raylib.DrawRectangleGradientEx(new Rectangle(current.x, current.y, current.w, current.h), Color.PINK, Color.MAGENTA, Color.DARKPURPLE , Color.MAGENTA);
-                Raylib.DrawRectangleLines((int)current.x, (int)current.y, (int)current.w, (int)current.h, Color.BLACK);
-                Raylib.DrawText(current.tag, (int)current.x + 10, (int)current.y + 10, 30, Color.YELLOW);
+                Raylib.DrawRectangleLines(current.x, current.y, current.w, current.h, Color.BLACK);
+                Raylib.DrawText(current.tag, current.x + 10, current.y + 10, 30, Color.YELLOW);
                 Raylib.DrawLineEx(new Vector2(current.x + 10, current.y + current.h - 10), new Vector2(current.x + current.w - 5, current.y + current.h - 10), 5, Color.YELLOW);
             }
             else
             {
                 // Raylib.DrawRectangle(current.x -10, current.y -10, current.w +20, current.h +20, Color.DARKBLUE);
                 Raylib.DrawRectangleGradientEx(new Rectangle(current.x -10, current.y -10, current.w +20, current.h +20), Color.SKYBLUE, Color.BLUE, Color.DARKBLUE , Color.BLUE);
-                Raylib.DrawRectangleLines((int)current.x -10, (int)current.y -10, (int)current.w +20, (int)current.h +20, Color.BLACK);
-                Raylib.DrawText(current.tag, (int)current.x, (int)current.y, 45, Color.ORANGE);
+                Raylib.DrawRectangleLines(current.x -10, current.y -10, current.w +20, current.h +20, Color.BLACK);
+                Raylib.DrawText(current.tag, current.x, current.y, 45, Color.ORANGE);
             }
         }
         // static public void rawr()
@@ -538,6 +537,39 @@ namespace Stort
             top25.toLeft = otherLeagues;
             top25.visable = new List<LiebeRay>(){officeTab, centralTab, squadTab, transferTab, kits, arrangeFriendlies, trophies, otherLeagues};
             top25.whatTab = new List<LiebeRay>(){myClubTab};
+
+            centralTab.tryX = centralTab.x;
+            squadTab.tryX = squadTab.x;
+            transferTab.tryX = transferTab.x;
+            officeTab.tryX = officeTab.x;
+            myClubTab.tryX = myClubTab.x;
+            simulate.tryX = simulate.x;
+            news.tryX = news.x;
+            cHubs.tryX = cHubs.x;
+            league.tryX = league.x;
+            cTraining.tryX = cTraining.x;
+            cInbox.tryX = cInbox.x;
+            lineUp.tryX = lineUp.x;
+            squadHub.tryX = squadHub.x;
+            youthSquad.tryX = youthSquad.x;
+            teamSheet.tryX = teamSheet.x;
+            training.tryX = training.x;
+            searchPlayer.tryX = searchPlayer.x;
+            transferHub.tryX = transferHub.x;
+            transferHistory.tryX = transferHistory.x;
+            finances.tryX = finances.x;
+            recommended.tryX = recommended.x;
+            scouts.tryX = scouts.x;
+            inbox.tryX = inbox.x;
+            vision.tryX = vision.x;
+            contracts.tryX = contracts.x;
+            manageStaff.tryX = manageStaff.x;
+            browseJobs.tryX = browseJobs.x;
+            kits.tryX = kits.x;
+            arrangeFriendlies.tryX = arrangeFriendlies.x;
+            trophies.tryX = trophies.x;
+            otherLeagues.tryX = otherLeagues.x;
+            top25.tryX = top25.x;
         }
     }
 }
